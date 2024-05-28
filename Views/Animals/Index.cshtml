@@ -1,0 +1,108 @@
+﻿@model IEnumerable<ShelterDomain.Model.Animal>
+
+@{
+    ViewData["Title"] = "Тварини за притулком";
+}
+
+<h1>Тварини за притулком @ViewBag.ShelterName </h1>
+
+<p>
+    @if (ViewBag.ShelterId != null && ViewBag.ShelterId != 0)
+    {
+        <a asp-action="Create" asp-route-shelterId="@ViewBag.ShelterId">Додати нову тварину</a>
+    }
+    else
+    {
+        <span></span>
+    }
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialNeeds)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shelter)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecialNeeds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shelter.Address)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AnimalId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AnimalId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AnimalId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-3">
+        <div id="countByYearChart"></div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            fetch('/api/charts/countByYear')
+                .then(response => response.json())
+                .then(data => {
+                    const dataTable = new google.visualization.DataTable();
+                    dataTable.addColumn('string', 'Рік');
+                    dataTable.addColumn('number', 'Кількість тварин');
+
+                    data.forEach(item => {
+                        dataTable.addRow([item.year, item.count]);
+                 });
+
+                    const options = {
+                        title: 'Тварини за роками',
+                        width: 600,
+                        height: 400,
+                        legend: { position: 'none' },
+                    };
+
+                    const chart = new google.visualization.ColumnChart(document.getElementById('countByYearChart'));
+
+                    chart.draw(dataTable, options);
+                });
+        }
+    </script>
+}

@@ -1,0 +1,14 @@
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\bin\Debug\net8.0\ShelterDomain.deps.json
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\bin\Debug\net8.0\ShelterDomain.dll
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\bin\Debug\net8.0\ShelterDomain.pdb
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.AssemblyInfoInputs.cache
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.AssemblyInfo.cs
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.csproj.CoreCompileInputs.cache
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.dll
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\refint\ShelterDomain.dll
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.pdb
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ref\ShelterDomain.dll
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\bin\Debug\net8.0\ShelterDomain.runtimeconfig.json
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.genruntimeconfig.cache
+C:\Projects\Shelter\src\ShelterMVC\ShelterDomain\obj\Debug\net8.0\ShelterDomain.csproj.AssemblyReference.cache

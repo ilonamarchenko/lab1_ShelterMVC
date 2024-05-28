@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ShelterDomain.Model.MedicalCard>
+
+@{
+    ViewData["Title"] = "Медичні картки";
+}
+
+<h1>Медична картка @ViewBag.Name</h1>
+
+<p>
+    @if (ViewBag.AnimalId != null && ViewBag.AnimalId != 0)
+    {
+        <a asp-action="Create" asp-route-animalId="@ViewBag.AnimalId">Додати нову медичну картку</a>
+    }
+    else
+    {
+        <span></span>
+    }
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfCreation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfCreation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animal.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MedicalId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MedicalId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MedicalId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-3">
+        <div id="countByYearChart1"></div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            fetch('/api/charts/countByYear1')
+                .then(response => response.json())
+                .then(data => {
+                    const dataTable = new google.visualization.DataTable();
+                    dataTable.addColumn('string', 'Рік');
+                    dataTable.addColumn('number', 'Кількість медичних карток');
+
+                    data.forEach(item => {
+                        dataTable.addRow([item.year, item.count]);
+                    });
+
+                    const options = {
+                        title: 'Медичні картки за датою створення',
+                        width: 600,
+                        height: 400,
+                        legend: { position: 'none' },
+                    };
+
+                    const chart = new google.visualization.ColumnChart(document.getElementById('countByYearChart1'));
+
+                    chart.draw(dataTable, options);
+                });
+        }
+    </script>
+}
+

@@ -1,0 +1,22 @@
+[
+  {
+    "ContainingType": "ShelterInfrastructure.Controllers.ChartsController",
+    "Method": "GetCountByYearAsync",
+    "RelativePath": "api/Charts/countByYear",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ShelterInfrastructure.Controllers.ChartsController",
+    "Method": "GetCountByYear1Async",
+    "RelativePath": "api/Charts/countByYear1",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
